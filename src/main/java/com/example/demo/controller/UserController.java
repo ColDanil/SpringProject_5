@@ -22,4 +22,22 @@ public class UserController {
     public UserEntity addUser(@RequestBody UserRequest userRequest) {
         return userService.addUser(userRequest);
     }
+
+    @PostMapping("/user/search")
+    public UserEntity getUserByIdFromJson(@RequestBody IdRequest idRequest) {
+        return userService.getUser(idRequest.getId());
+    }
+
+
+    public static class IdRequest {
+        private int id;
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+    }
 }
